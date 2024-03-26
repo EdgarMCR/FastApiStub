@@ -24,25 +24,6 @@ class UploadItem(BaseModel):
 app = FastAPI()
 
 
-@app.post("/process-links")
-async def process_links(item: Item):
-    """ Example: download from link, and upload a list of contents to the upload link."""
-    blob_service_client = BlobServiceClient.from_connection_string(item.download_link)
-    container_client = blob_service_client.get_container_client(os.path.basename(item.download_link))
-
-    blobs_list = container_client.list_blobs()
-    contents = [blob.name for blob in blobs_list]
-
-    with open('contents.json', 'w') as f:
-        json.dump(contents, f)
-
-    blob_service_client = BlobServiceClient.from_connection_string(item.upload_link)
-    blob_client = blob_service_client.get_blob_client(os.path.basename(item.upload_link), 'contents.json')
-
-    with open('contents.json', 'rb') as data:
-        blob_client.upload_blob(data)
-
-
 @app.post("/upload-video")
 async def upload_video(upload_connection_string: Annotated[str, Form()], file: UploadFile = File(...)):
     """ Receive a file and upload output to the upload link. """
