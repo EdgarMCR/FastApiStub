@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "1ac6a541-e95e-4ba5-beb9-4134a74061b0",
+		"name": "FastApiUpload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17156499"
+	},
+	"item": [
+		{
+			"name": "upload_video",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "upload_connection_string",
+							"value": "BlobEndpoint=https://testdatasa.blob.core.windows.net/;QueueEndpoint=https://testdatasa.queue.core.windows.net/;FileEndpoint=https://testdatasa.file.core.windows.net/;TableEndpoint=https://testdatasa.table.core.windows.net/;SharedAccessSignature=sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2024-03-27T03:31:53Z&st=2024-03-26T19:31:53Z&spr=https&sig=4fvT5Xtmt3vQHe0EVX5s8TNkV%2B3quGsYTvIkVeVZpfw%3D",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/edgar/Downloads/file_example_MP4_480_1_5MG.mp4"
+						},
+						{
+							"key": "item",
+							"value": "{\"upload_link\": \"https://testdatasa.blob.core.windows.net/upload?sp=r&st=2024-03-26T19:10:28Z&se=2024-03-27T03:10:28Z&spr=https&sv=2022-11-02&sr=c&sig=sS5brHVLKBfeI1z0oLDbkLB6yUID3fmu29MSbveKLrU%3D\", \"setting1\": \"your_setting1\", \"setting2\": \"your_setting2\"}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/upload-video",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"upload-video"
+					],
+					"query": [
+						{
+							"key": "upload_link",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
